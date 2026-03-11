@@ -1,0 +1,8 @@
+ganenv/
+__pycache__/
+*.pyc
+*.pth
+outputs/
+weights/
+.env
+.ipynb_checkpoints
