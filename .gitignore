@@ -6,3 +6,4 @@ outputs/
 weights/
 .env
 .ipynb_checkpoints
+data/MNIST/
