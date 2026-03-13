@@ -24,24 +24,6 @@ if model == "CGAN":
     digit = st.slider("Select Digit to Generate", 0, 9, 3)
 
 
-# Train Model
-
-if st.button("Train Model"):
-
-    st.write("Training started...")
-
-    if model == "Vanilla GAN":
-        subprocess.run(["python", "training/train_vanilla_gan.py"])
-
-    elif model == "DCGAN":
-        subprocess.run(["python", "training/train_dcgan.py"])
-
-    elif model == "CGAN":
-        subprocess.run(["python", "training/train_cgan.py"])
-
-    st.success("Training completed")
-
-
 # Generate Image
 
 if st.button("Generate Image"):
