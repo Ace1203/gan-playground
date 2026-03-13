@@ -34,7 +34,10 @@ def generate_image(model_type, digit=None):
         z_dim = 100
 
         G = DCGANGenerator(z_dim).to(device)
-        G.load_state_dict(torch.load("weights/dcgan/generator.pth", map_location=device))
+        G.load_state_dict(
+            torch.load("weights/cgan/generator.pth", map_location=device),
+            strict=False
+        )
         G.eval()
 
         noise = torch.randn(1, z_dim, 1, 1).to(device)
@@ -51,7 +54,10 @@ def generate_image(model_type, digit=None):
         z_dim = 100
 
         G = CGANGenerator(z_dim).to(device)
-        G.load_state_dict(torch.load("weights/cgan/generator.pth", map_location=device))
+        G.load_state_dict(
+            torch.load("weights/cgan/generator.pth", map_location=device),
+            strict=False
+        )
         G.eval()
 
         label = torch.tensor([digit]).to(device)
