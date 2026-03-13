@@ -10,13 +10,10 @@ class Generator(nn.Module):
         self.label_embed = nn.Embedding(num_classes, num_classes)
 
         self.model = nn.Sequential(
-            nn.Linear(z_dim + num_classes, 256),
+            nn.Linear(z_dim + num_classes, 512),
             nn.ReLU(),
 
-            nn.Linear(256, 512),
-            nn.ReLU(),
-
-            nn.Linear(512,1024),
+            nn.Linear(512, 1024),
             nn.ReLU(),
 
             nn.Linear(1024, img_dim),
@@ -26,11 +23,9 @@ class Generator(nn.Module):
     def forward(self, noise, labels):
 
         label_embedding = self.label_embed(labels)
-
         x = torch.cat([noise, label_embedding], dim=1)
 
         return self.model(x)
-
 
 class Discriminator(nn.Module):
 
@@ -53,7 +48,6 @@ class Discriminator(nn.Module):
     def forward(self, img, labels):
 
         label_embedding = self.label_embed(labels)
-
         x = torch.cat([img, label_embedding], dim=1)
 
         return self.model(x)
