@@ -7,7 +7,7 @@ class Generator(nn.Module):
     def __init__(self, z_dim=100, img_dim=784):
         super().__init__()
 
-        self.model = nn.Sequential(
+        self.net = nn.Sequential(
             nn.Linear(z_dim, 256),
             nn.ReLU(True),
 
@@ -22,7 +22,7 @@ class Generator(nn.Module):
         )
 
     def forward(self, x):
-        return self.model(x)
+        return self.net(x)
 
 
 class Discriminator(nn.Module):
@@ -30,7 +30,7 @@ class Discriminator(nn.Module):
     def __init__(self, img_dim=784):
         super().__init__()
 
-        self.model = nn.Sequential(
+        self.net = nn.Sequential(
             nn.Linear(img_dim, 512),
             nn.LeakyReLU(0.2),
 
@@ -42,4 +42,4 @@ class Discriminator(nn.Module):
         )
 
     def forward(self, x):
-        return self.model(x)
+        return self.net(x)
